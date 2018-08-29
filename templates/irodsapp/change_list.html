@@ -1,0 +1,18 @@
+{% extends "admin/change_list.html" %}
+
+{% load i18n %}
+
+	{% block search %}
+		{{ block.super }}
+		
+<b>Every 24 hours it is checked whether there are new attributes.<br/>
+Of these attributes a type is determined that you can change yourself.<br/><br/>
+Types will be used in the database queries used when filtering, so be sure to enter the correct type.<br/><br/>
+</b>
+
+   	{% endblock %}
+      
+
+      
+     
+  

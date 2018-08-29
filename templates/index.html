@@ -1,0 +1,44 @@
+{% load js %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>iRods</title>
+  
+	<link href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-triton/resources/theme-triton-all.css" rel="stylesheet" />  
+	<link rel="stylesheet" type="text/css" href="static/app.css">
+
+	<script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+      
+    <style type="text/css">
+        .task {
+            background-image: url(/static/cog.gif) !important;
+        }
+    </style>    
+	<script type="text/javascript" src="static/app.js"></script>
+	
+	<script type="text/javascript"> 
+   		var filters = {{ filters | js }};
+   		var collection_filters = {{ collection_filters | js }};
+   		var folder = {{folder | js}};
+   		var csrf_token = '{{ csrf_token }}';
+   		var image_columns = {{image_columns | js }};
+   		
+   	    var task = new Ext.util.DelayedTask(function(){
+   	    	Ext.ComponentQuery.query("irods_images")[0].updateLayout();
+   		});
+	</script>
+
+</head>
+
+<body>
+	<form id="TheForm" method="post" action="/create_report/"  target="TheWindow" >
+    	{% csrf_token %}
+		<input type="hidden" id="coll_id" name="coll_id" />
+		<input type="hidden" id="sub_collections" name="sub_collections" />
+		<input type="hidden" id="nb_of_columns" name="nb_of_columns" />
+</form>
+</body>
+
+</html>
