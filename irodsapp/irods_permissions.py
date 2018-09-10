@@ -53,7 +53,8 @@ def get_collection_id(name):
     with TuRODSSession() as session:
         query = session.query(Collection.id).filter(Collection.name == name)
         result = query.execute()
-        return result[0][Collection.id]
+        if len(result) > 0:
+            return result[0][Collection.id]
     return None
 
 def delete_permission(user_id, object_id):
