@@ -9,7 +9,7 @@ Below the screenshots you will find links to screencasts.
 
 ![ImRODS](images/VideoScreenShot.bmp)
 
-The following screencasts illustrate the use of the GUI:
+The following screencasts illustrate the use of the GUI. You may see a warning that GitHub can't show files this big. Click on 'View Raw' to download a .mp4 file.
 
 [General introduction](videos/00Intro.mp4)
 
