@@ -47,8 +47,8 @@ Ext.define('iRods.view.main.filter', {
     		value: folder,
     	});    
     	
-        this.addFilters(filters, 'Object filters');
-        this.addFilters(collection_filters, 'Collection filters');      
+        this.addFilters(filters, 'Object filters', 'obj');
+        this.addFilters(collection_filters, 'Collection filters', 'col');  
     },
     
     
@@ -105,7 +105,7 @@ Ext.define('iRods.view.main.filter', {
 		return postData;
     },
         
-    addFilters: function(filters, heading) {
+    addFilters: function(filters, heading, prefix) {
         if (filters.length > 0) {
 
         	this.add({
@@ -120,13 +120,13 @@ Ext.define('iRods.view.main.filter', {
         	var f = filters[n];
         	
     		if (f.type == 'St')
-    			this.addStringFilterEntry(f.key, 'obj-lk-' + f.key, f.lk);
+    			this.addStringFilterEntry(f.key, prefix + '-lk-' + f.key, f.lk);
     		else if (f.type == 'De')
-    			this.addDecimalFilterEntry(f.key, 'obj-gt-' + f.key, f.gt, 'obj-lt-'+f.key, f.lt, 'obj-eq-' + f.key, f.equals);	
+    			this.addDecimalFilterEntry(f.key,  prefix + '-gt-' + f.key, f.gt,  prefix + '-lt-'+f.key, f.lt,  prefix + '-eq-' + f.key, f.equals);	
     		else if ( f.type == 'Ti')
-    			this.addTimeFilterEntry(f.key, 'obj-ta-' + f.key, f.ta, 'obj-tb-' + f.key,f.tb, 'obj-to-' + f.key, f.to);	
+    			this.addTimeFilterEntry(f.key,  prefix + '-ta-' + f.key, f.ta,  prefix + '-tb-' + f.key,f.tb,  prefix + '-to-' + f.key, f.to);	
     		else if (f.type == 'Da')
-    			this.addDateFilterEntry(f.key, 'obj-af-' + f.key, f.af, 'obj-be-' + f.key, f.be, 'obj-on-'+ f.key, f.on);	
+    			this.addDateFilterEntry(f.key,  prefix + '-af-' + f.key, f.af,  prefix + '-be-' + f.key, f.be, prefix + '-on-'+ f.key, f.on);	
         }
     },
     
